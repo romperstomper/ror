@@ -18,10 +18,10 @@ RUN rvm use 2.6.3
 RUN gem install rails
 RUN mkdir -p /opt/app && \
     chown -R gary /opt/app /opt/app-root/src /usr/local/rvm
+EXPOSE 3000
 USER gary
 RUN rails new planter
-RUN cd planter
+WORKDIR /opt/app/planter
 RUN rails generate scaffold person email name
 RUN cd /opt/app/planter
 CMD ["rails", "s"]
-CMD ["sleep", "infinity"]
